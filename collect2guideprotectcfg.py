@@ -140,8 +140,8 @@ def dumpsql2xml(fname='new_rule'):
     tree.write(fname, encoding="UTF-8")
     pretty_xmlfile(fname)
     print '\n\n'
-    logging.info()
-    mylogging.info('succ save count{},file name:{1}'.format(len(result),fname))
+
+    logging.info('succ save count{0},file name:{1}'.format(len(result),fname))
 
 import sys
 if __name__=='__main__':
