@@ -141,7 +141,7 @@ def dumpsql2xml(fname='new_rule'):
     pretty_xmlfile(fname)
     print '\n\n'
 
-    logging.info('succ save count{0},file name:{1}'.format(len(result),fname))
+    print ('succ save count:{0},file name:{1}'.format(len(result),fname))
 
 import sys
 if __name__=='__main__':
