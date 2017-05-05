@@ -93,7 +93,7 @@ def dumpsql2xml(fname='new_rule'):
         if (int)(inp) != 1:
             return
 
-
+    purgefname = 'fname'+fname
     dbobj = getDbOrCreate()
     number = dbobj.execute('select * from forgeurls')
     if number==0:
@@ -105,7 +105,7 @@ def dumpsql2xml(fname='new_rule'):
 
     doc = ET.Element('doc')
     doc.attrib['version'] = '1.0'
-
+    pfp = open(purgefname,"w")
     for row in result:
         url = row[3]
 
@@ -133,14 +133,14 @@ def dumpsql2xml(fname='new_rule'):
         redirect_target.text = rule[RULE_ATTR_NAME_redirect_target]
         req_match_method.text = rule[RULE_ATTR_NAME_req_match_method]
         full_url.text = rule[RULE_ATTR_NAME_full_url]
-
+        pfp.write(url+"\n")
 
 
     tree = ET.ElementTree(doc)
     tree.write(fname, encoding="UTF-8")
     pretty_xmlfile(fname)
     print '\n\n'
-
+    pfp.close()
     print ('succ save count:{0},file name:{1}'.format(len(result),fname))
 
 import sys
