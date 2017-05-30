@@ -94,7 +94,7 @@ def dumpsql2xml(fname='new_rule'):
         if (int)(inp) != 1:
             return
 
-    purgefname = 'fname'+fname
+    purgefname = 'fname'+fname+".txt"
     dbobj = getDbOrCreate()
     number = dbobj.execute('select * from forgeurls')
     if number==0:
@@ -136,7 +136,7 @@ def dumpsql2xml(fname='new_rule'):
         redirect_target.text = rule[RULE_ATTR_NAME_redirect_target]
         req_match_method.text = rule[RULE_ATTR_NAME_req_match_method]
         full_url.text = rule[RULE_ATTR_NAME_full_url]
-        pfp.write(url+'\n')
+        pfp.write((url + "\n").encode('utf-8'))
 
 
     tree = ET.ElementTree(doc)
