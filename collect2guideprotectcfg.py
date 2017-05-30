@@ -83,7 +83,7 @@ from basedef import *
 
 def dumpsql2xml(fname='new_rule'):
 
-    curtime = time.strftime('%Y-%m-%d %H_%M_%S',time.localtime(time.time()))
+
     fname = fname+time.strftime('%Y-%m-%d %H_%M_%S',time.localtime(time.time()))+".xml"
     if os.path.isfile(fname):
         inp = raw_input('file {0} existed, ok to overwrite ? press 1 to continue\n'.format(fname))
@@ -106,6 +106,7 @@ def dumpsql2xml(fname='new_rule'):
 
     doc = ET.Element('doc')
     doc.attrib['version'] = '1.0'
+    curtime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
     doc.attrib['gentime'] = curtime
 
     pfp = open(purgefname,"w")
